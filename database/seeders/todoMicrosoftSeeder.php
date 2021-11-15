@@ -16,34 +16,80 @@ class todoMicrosoftSeeder extends Seeder
     {
         //table users
         DB::table('users')->insert([
-            ["name" => "atik", "email" => "atik@todo.org" ,"password" => "at123" ],
-            ["name" => "alina", "email" => "alina@todo.org" ,"password" => "al123" ],
-            ["name" => "fikha", "email" => "fikha@todo.org" ,"password" => "fi123" ],
+            [
+                "name" => "atik", 
+                "email" => "atik@todo.org",
+                "password" => "at123",
+                "created_at" => date('Y-m-d H:i:s', time()),
+                "updated_at" => date('Y-m-d H:i:s', time())
+            ],      
+        ]);
+
+        //table colors
+        DB::table('colors')->insert([
+            [
+                "name" => "blue",
+                "created_at" => date('Y-m-d H:i:s', time()),
+                "updated_at" => date('Y-m-d H:i:s', time())
+            ]
+            
+            
         ]);
         //table lists
         DB::table('lists')->insert([
-            ["color_id" => "2", "user_id" => 2, "task_id" => "1" ,"name" => "Mengerjakan Migration DB", "password" => "db" ],
-            ["color_id" => "2", "user_id" => 2, "task_id" => "1" ,"name" => "Mengerjakan Migration DB", "password" => "db" ],
-            ["color_id" => "2", "user_id" => 2, "task_id" => "1" ,"name" => "Mengerjakan Migration DB", "password" => "db" ]
+            [
+                "color_id" => 1, 
+                "user_id" => 1, 
+                "name" => "Mengerjakan Migration DB", 
+                "password" => "123",
+                "created_at" => date('Y-m-d H:i:s', time()),
+                "updated_at" => date('Y-m-d H:i:s', time()) 
+            ],
             
         ]);
-        //table colors
-        DB::table('colors')->insert([
-            "name" => "blue",
-            "name" => "green",
-            "name" => "yellow",
-        ]);
+        
         //table tasks
         DB::table('tasks')->insert([
-            ["name" => "Nonton video", "note" => "sesi 5 ya guys" ],
-            ["name" => "Nentuin judul", "note" => "min. 5 kata" ],
-            ["name" => "Tanya ke senior", "note" => "SKSD aja dehh" ],
+            [
+                "list_id" => 1,
+                "user_id" => 1,
+                "name" => "Nonton video",
+                "reminder_datetime" => date('Y-m-d H:i:s', time()),
+                "due_date" => date('Y-m-d', time()),
+                "attachment_url" => "https://github.com/atikapprinda/todo-microsoft-2",
+                "note" => "sesi 5 ya guys",
+                "is_complete" => false,
+                "is_my_day" => false,
+                "created_at" => date('Y-m-d H:i:s', time()),
+                "updated_at" => date('Y-m-d H:i:s', time())
+            ],
         ]);
         //table categories
         DB::table('categories')->insert([
-            "name" => "school",
-            "name" => "work",
-            "name" => "self-love",
+            [
+                "name" => "school",
+                "created_at" => date('Y-m-d H:i:s', time()),
+                "updated_at" => date('Y-m-d H:i:s', time())
+            ]
+        ]);
+        //table task_categories
+        DB::table('task_categories')->insert([
+            [
+                "task_id" => 1,
+                "category_id" => 1,
+                "created_at" => date('Y-m-d H:i:s', time()),
+                "updated_at" => date('Y-m-d H:i:s', time())
+            ]
+        ]);
+        //table subtask
+        DB::table('subtasks')->insert([
+            [
+                "task_id" => 1,
+                "name" => "mencoba lagi dan lagi",
+                "is_complete" => false,
+                "created_at" => date('Y-m-d H:i:s', time()),
+                "updated_at" => date('Y-m-d H:i:s', time())
+            ]
         ]);
     }
 }
